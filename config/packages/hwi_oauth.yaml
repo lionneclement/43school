@@ -1,4 +1,6 @@
 hwi_oauth:
+    http:
+        client: httplug.client.hwi_special
     # list of names of the firewalls in which this bundle is active, this setting MUST be set
     firewall_names: [main]
 
