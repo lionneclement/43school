@@ -74,6 +74,16 @@ class User
      */
     private $students;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $facebookID;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $facebookAccessToken;
+
     public function __construct()
     {
         $this->projects = new ArrayCollection();
@@ -275,5 +285,37 @@ class User
         }
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFacebookID()
+    {
+        return $this->facebookID;
+    }
+
+    /**
+     * @param mixed $facebookID
+     */
+    public function setFacebookID($facebookID): void
+    {
+        $this->facebookID = $facebookID;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFacebookAccessToken()
+    {
+        return $this->facebookAccessToken;
+    }
+
+    /**
+     * @param mixed $facebookAccessToken
+     */
+    public function setFacebookAccessToken($facebookAccessToken): void
+    {
+        $this->facebookAccessToken = $facebookAccessToken;
     }
 }
