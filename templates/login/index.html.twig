@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LoginController!{% endblock %}
+
+{% block body %}
+
+<a href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook' }) }}">
+    <span>Login with Facebook</span>
+</a>
+{% endblock %}
