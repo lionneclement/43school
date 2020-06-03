@@ -7,9 +7,30 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
+use App\Controller\User\CheckUserController;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ApiResource(
+ *      collectionOperations={
+ *              "get"={
+ *                  "normalization_context"={"groups"={"profile"}}
+ *              }
+ *          },
+ *      itemOperations={
+ *              "get"={
+ *                  "normalization_context"={"groups"={"profile"}},
+ *                  "controller"=CheckUserController::class,
+ *              },
+ *              "put"={
+ *                  "normalization_context"={"groups"={"profile"}},
+ *                  "controller"=CheckUserController::class,
+ *              },
+ *              "delete"
+ *          }
+ * )
  */
 class User implements UserInterface
 {
@@ -22,6 +43,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("profile")
      */
     private $email;
 
@@ -32,36 +54,43 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("profile")
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("profile")
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups("profile")
      */
     private $image;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("profile")
      */
     private $country;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups("profile")
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("profile")
      */
     private $linkedin;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("profile")
      */
     private $github;
 
