@@ -90,6 +90,16 @@ class User implements UserInterface
      */
     private $facebookAccessToken;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $googleID;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $googleAccessToken;
+
     public function __construct()
     {
         $this->projects = new ArrayCollection();
@@ -376,5 +386,37 @@ class User implements UserInterface
     public function setFacebookAccessToken($facebookAccessToken): void
     {
         $this->facebookAccessToken = $facebookAccessToken;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGoogleID()
+    {
+        return $this->googleID;
+    }
+
+    /**
+     * @param mixed $googleID
+     */
+    public function setGoogleID($googleID): void
+    {
+        $this->googleID = $googleID;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGoogleAccessToken()
+    {
+        return $this->googleAccessToken;
+    }
+
+    /**
+     * @param mixed $googleAccessToken
+     */
+    public function setGoogleAccessToken($googleAccessToken): void
+    {
+        $this->googleAccessToken = $googleAccessToken;
     }
 }
