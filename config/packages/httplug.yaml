@@ -1,0 +1,23 @@
+httplug:
+    plugins:
+        retry:
+            retry: 1
+
+    discovery:
+        client: 'auto'
+
+    clients:
+        default:
+            factory: 'httplug.factory.curl'
+        hwi_special:
+            factory: 'httplug.factory.guzzle6'
+            config: # You pass here the Guzzle configuration, exactly like before.
+                timeout: 10
+                verify: false
+                max_redirects: 1
+                ignore_errors: false
+        app:
+            http_methods_client: true
+            plugins:
+                - 'httplug.plugin.content_length'
+                - 'httplug.plugin.redirect'
