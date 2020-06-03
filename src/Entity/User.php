@@ -14,18 +14,14 @@ use App\Controller\User\CheckUserController;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ApiResource(
- *      collectionOperations={
- *              "get"={
- *                  "normalization_context"={"groups"={"profile"}}
- *              }
- *          },
+ *      normalizationContext={"groups"={"profile"}},
+ *      denormalizationContext={"groups"={"profile"}},
+ *      collectionOperations={"get"},
  *      itemOperations={
  *              "get"={
- *                  "normalization_context"={"groups"={"profile"}},
  *                  "controller"=CheckUserController::class,
  *              },
  *              "put"={
- *                  "normalization_context"={"groups"={"profile"}},
  *                  "controller"=CheckUserController::class,
  *              },
  *              "delete"
