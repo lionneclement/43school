@@ -24,7 +24,9 @@ use App\Controller\User\CheckUserController;
  *              "put"={
  *                  "controller"=CheckUserController::class,
  *              },
- *              "delete"
+ *              "delete"={
+ *                  "controller"=CheckUserController::class,
+ *              }
  *          }
  * )
  */

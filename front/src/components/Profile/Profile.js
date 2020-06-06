@@ -5,7 +5,15 @@ export default function Profile() {
     const [user, setUser] = useState({});
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/users/9')
+        axios({
+            url: 'http://localhost:8000/api/users/10',
+            method: 'get',
+            withCredentials: true,
+            headers:{
+                Cookie: "PHPSESSID=ru9pf1f8bg46isg1ssfu1kte2e",
+            }
+            
+        })
         .then(function (response) {
             console.log(response.data);
             setUser(response.data);
@@ -18,7 +26,15 @@ export default function Profile() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        axios.put('http://localhost:8000/api/users/9', user)
+        axios({
+            url: 'http://localhost:8000/api/users/10',
+            method: 'put',
+            data: user,
+            withCredentials: true,
+            headers:{
+                Cookie: "PHPSESSID=ru9pf1f8bg46isg1ssfu1kte2e",
+            }
+        })
         .then(function (response) {
             console.log(response);
         })
