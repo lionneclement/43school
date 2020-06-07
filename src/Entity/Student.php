@@ -7,6 +7,8 @@ use App\Repository\StudentRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ORM\Entity(repositoryClass=StudentRepository::class)
@@ -23,6 +25,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "delete"
  *          }
  * )
+ * @ApiFilter(SearchFilter::class, properties={"user": "exact", "project": "exact"})
  */
 class Student
 {
