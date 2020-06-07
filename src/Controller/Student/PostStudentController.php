@@ -17,9 +17,6 @@ class PostStudentController
 
     public function __invoke(Student $data): Student
     {
-        if (!$this->user) {
-            return false;
-        }
         $data->setDateFinish(new \DateTime());
         $data->setUser($this->user);
 

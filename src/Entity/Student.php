@@ -13,6 +13,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 /**
  * @ORM\Entity(repositoryClass=StudentRepository::class)
  * @ApiResource(
+ *      attributes={"security"="is_granted('ROLE_USER')"},
  *      collectionOperations={
  *              "get",
  *              "post"={

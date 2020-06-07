@@ -13,6 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
  * @UniqueEntity("title")
  * @ApiResource(
+ *      attributes={"security"="is_granted('ROLE_USER')"},
  *      collectionOperations={
  *              "get",
  *              "post"={

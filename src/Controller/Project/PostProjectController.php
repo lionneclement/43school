@@ -16,9 +16,6 @@ class PostProjectController
 
     public function __invoke(Project $data): Project
     {
-        if (!$this->user) {
-            return false;
-        }
         $data->setAuthor($this->user);
         return $data;
     }

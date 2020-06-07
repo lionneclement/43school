@@ -16,11 +16,9 @@ class CheckUserController
 
     public function __invoke(User $data): User
     {
-         
         if (!$data instanceof $this->user) {
             return false;
         }
-
         return $data;
     }
 }
