@@ -48,7 +48,7 @@ class Project
     /**
      * @ORM\Column(type="array", nullable=true)
      */
-    private $linkHelp = [];
+    private $linkLearn = [];
 
     /**
      * @ORM\Column(type="array", nullable=true)
@@ -106,14 +106,14 @@ class Project
         return $this;
     }
 
-    public function getLinkHelp(): ?array
+    public function getLinkLearn(): ?array
     {
-        return $this->linkHelp;
+        return $this->linkLearn;
     }
 
-    public function setLinkHelp(?array $linkHelp): self
+    public function setLinkLearn(?array $linkLearn): self
     {
-        $this->linkHelp = $linkHelp;
+        $this->linkLearn = $linkLearn;
 
         return $this;
     }
