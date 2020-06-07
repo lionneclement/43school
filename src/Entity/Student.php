@@ -2,11 +2,30 @@
 
 namespace App\Entity;
 
+use App\Controller\Student\PostStudentController;
 use App\Repository\StudentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ORM\Entity(repositoryClass=StudentRepository::class)
+ * @ApiResource(
+ *      collectionOperations={
+ *              "get",
+ *              "post"={
+ *                  "controller"=PostStudentController::class
+ *              }
+ *          },
+ *      itemOperations={
+ *              "get",
+ *              "put",
+ *              "delete"
+ *          }
+ * )
+ * @ApiFilter(SearchFilter::class, properties={"user": "exact", "project": "exact"})
  */
 class Student
 {
@@ -23,12 +42,12 @@ class Student
     private $dateFinish;
 
     /**
-     * @ORM\ManyToOne(targetEntity=project::class, inversedBy="students")
+     * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="students")
      */
     private $project;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="students")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="students")
      */
     private $user;
 
