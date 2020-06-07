@@ -6,9 +6,25 @@ use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\Project\PostProjectController;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
+ * @UniqueEntity("title")
+ * @ApiResource(
+ *      collectionOperations={
+ *              "get",
+ *              "post"={
+ *                  "controller"=PostProjectController::class,
+ *              }
+ *          },
+ *      itemOperations={
+ *              "get",
+ *              "put",
+ *              "delete"
+ *          }
+ * )
  */
 class Project
 {
@@ -20,7 +36,7 @@ class Project
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $title;
 
@@ -40,7 +56,7 @@ class Project
     private $linkError = [];
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="projects")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="projects")
      */
     private $author;
 
